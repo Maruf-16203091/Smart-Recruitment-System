@@ -7,7 +7,6 @@ import Login from "./pages/login/Login";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Landing from "./pages/landing/Landing";
-import AuthOutlet from "@auth-kit/react-router/AuthOutlet";
 import MyJobs from "./pages/myJobs/MyJobs";
 import CreateJob from "./pages/createJob/CreateJob";
 import Result from "./pages/result/Result";
@@ -18,7 +17,6 @@ import ViewQuestionsPage from "./pages/questionnaire/ViewQuestionsPage";
 import EditQuestionsPage from "./pages/questionnaire/EditQuestionsPage";
 import SideNav from "./components/sideNav/SideNav";
 import TableResult from "./components/table/TableResult";
-import Cookies from "js-cookie";
 import Scheduler from "./components/schedulerPage/SchedulerPage";
 import MyScheduler from "./components/schedulerPage/MySchedulerPage";
 import Email from "./pages/email/Email";
@@ -49,41 +47,22 @@ function App() {
           )}
           <Routes>
             <Route path="/" element={<Landing />} />
-            {/*
-              Wrap the login route with a check for authentication.
-              If authenticated, redirect to the dashboard.
-            */}
-            {authToken ? (
-              <Route path="/login" element={<Navigate to="/dashboard" />} />
-            ) : (
-              <Route path="/login" element={<Login />} />
-            )}
-            <Route element={<AuthOutlet fallbackPath="/login" />}>
-              <Route path="/dashboard" element={<Home />} />
-              <Route exact path="/myjobs" element={<MyJobs />} />
-              <Route exact path="/create" element={<CreateJob />} />
-              <Route exact path="/result/:jobId" element={<Result />} />
-              <Route path="/screening/:jobId" element={<Screening />} />
-              <Route path="/WorkflowPage" element={<WorkflowPage />} />
-              <Route
-                path="/questionnaire/:jobId"
-                element={<SetQuestionsPage />}
-              />
-              <Route
-                path="/assessment/:resultId/:jobId"
-                element={<ViewQuestionsPage />}
-              />
-              <Route path="/editQuestion" element={<EditQuestionsPage />} />
-              <Route path="/result1" element={<TableResult />} />
-              <Route path="/scheduler/:resultId" element={<Scheduler />} />
-              <Route
-                path="/AssessmentSummery/:jobId"
-                element={<AllAssessment />}
-              />
-              <Route path="/myscheduler/" element={<MyScheduler />} />
-              <Route path="/email" element={<Email />} />
-              <Route path="/changePassword" element={<ChangePassword />} />
-            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<Home />} />
+            <Route exact path="/myjobs" element={<MyJobs />} />
+            <Route exact path="/create" element={<CreateJob />} />
+            <Route exact path="/result/" element={<Result />} />
+            <Route path="/screening/" element={<Screening />} />
+            <Route path="/WorkflowPage" element={<WorkflowPage />} />
+            <Route path="/questionnaire/" element={<SetQuestionsPage />} />
+            <Route path="/assessment/" element={<ViewQuestionsPage />} />
+            <Route path="/editQuestion" element={<EditQuestionsPage />} />
+            <Route path="/result1" element={<TableResult />} />
+            <Route path="/scheduler/" element={<Scheduler />} />
+            <Route path="/AssessmentSummery/" element={<AllAssessment />} />
+            <Route path="/myscheduler/" element={<MyScheduler />} />
+            <Route path="/email" element={<Email />} />
+            <Route path="/changePassword" element={<ChangePassword />} />
           </Routes>
         </div>
 
